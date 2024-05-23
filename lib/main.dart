@@ -56,7 +56,11 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            Image.asset("assets/image/bike.png"),
+            Image.asset(
+              "assets/image/bike.png",
+              height: 100,
+              width: 100,
+            ),
           ],
         ),
       ),
