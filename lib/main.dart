@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cook_book/presentations/demo_navigaion/btvn/screen_1.dart';
 import 'package:flutter_cook_book/presentations/demo_navigaion/screen_b.dart';
 import 'package:flutter_cook_book/presentations/demo_navigaion/screen_c.dart';
 import 'package:flutter_cook_book/presentations/demo_navigaion/screen_d.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       // home: const ScreenB(),
-      home: const ScreenB(),
+      home: const Screen1(),
     );
   }
 }

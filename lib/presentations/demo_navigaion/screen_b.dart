@@ -74,11 +74,11 @@ class ScreenB extends StatelessWidget {
                 height: 12,
               ),
               Image.network('https://picsum.photos/250?image=9'),
-              Image.asset(
-                ImageApp.imageCar,
-                height: 50,
-                width: 50,
-              ),
+              // Image.asset(
+              //   ImageApp.imageCar,
+              //   height: 50,
+              //   width: 50,
+              // ),
             ],
           ),
         ),
