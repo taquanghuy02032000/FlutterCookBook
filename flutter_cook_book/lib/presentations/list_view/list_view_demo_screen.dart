@@ -31,52 +31,56 @@ class _ListViewDemoScreenState extends State<ListViewDemoScreen> {
           horizontal: 8,
         ),
         child: SingleChildScrollView(
-          // physics: NeverScrollableScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              buildTextFormField(),
-              SizedBox(
-                height: 10,
-              ),
-              SizedBox(
-                height: 100,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  children: [
-                    bubbleChatWidget(),
-                    bubbleChatWidget(),
-                    bubbleChatWidget(),
-                    bubbleChatWidget(),
-                    bubbleChatWidget(),
-                    bubbleChatWidget(),
-                    bubbleChatWidget(),
-                    bubbleChatWidget(),
-                    // bubbleChatWidget()
-                  ],
+          child: Container(
+            height: 500,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildTextFormField(),
+                SizedBox(
+                  height: 10,
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              ListView(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                children: [
-                  verticleBubbleChat(),
-                  verticleBubbleChat(),
-                  verticleBubbleChat(),
-                  verticleBubbleChat(),
-                  verticleBubbleChat(),
-                  verticleBubbleChat(),
-                  verticleBubbleChat(),
-                  verticleBubbleChat(),
-                  verticleBubbleChat(),
-                  verticleBubbleChat(),
-                ],
-              )
-            ],
+                SizedBox(
+                  height: 100,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    children: [
+                      bubbleChatWidget(),
+                      bubbleChatWidget(),
+                      bubbleChatWidget(),
+                      bubbleChatWidget(),
+                      bubbleChatWidget(),
+                      bubbleChatWidget(),
+                      bubbleChatWidget(),
+                      bubbleChatWidget(),
+                      // bubbleChatWidget()
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Expanded(child: listViewSeperated()),
+                // listViewBuilderDemoWidget(),
+                // ListView(
+                //   physics: const NeverScrollableScrollPhysics(),
+                //   shrinkWrap: true,
+                //   children: [
+                //     verticleBubbleChat(),
+                //     verticleBubbleChat(),
+                //     verticleBubbleChat(),
+                //     verticleBubbleChat(),
+                //     verticleBubbleChat(),
+                //     verticleBubbleChat(),
+                //     verticleBubbleChat(),
+                //     verticleBubbleChat(),
+                //     verticleBubbleChat(),
+                //     verticleBubbleChat(),
+                //   ],
+                // )
+              ],
+            ),
           ),
         ),
       ),
@@ -105,6 +109,39 @@ class _ListViewDemoScreenState extends State<ListViewDemoScreen> {
           ),
         )
       ],
+    );
+  }
+
+  ListView listViewBuilderDemoWidget() {
+    return ListView.builder(
+      itemCount: 15,
+      shrinkWrap: true,
+      itemBuilder: (context, index) {
+        final Color colorResult = (index % 2 == 0) ? Colors.red : Colors.yellow;
+        return Container(
+          height: 50,
+          color: colorResult,
+        );
+      },
+    );
+  }
+
+  ListView listViewSeperated() {
+    return ListView.separated(
+      itemBuilder: (context, index) {
+        final Color colorResult = (index % 2 == 0) ? Colors.red : Colors.yellow;
+        return Container(
+          height: 50,
+          color: colorResult,
+        );
+      },
+      separatorBuilder: (context, index) {
+        return Container(
+          height: 5,
+          color: Colors.black,
+        );
+      },
+      itemCount: 10,
     );
   }
 
