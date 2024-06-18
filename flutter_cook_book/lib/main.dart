@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cook_book/presentations/bottom_sheet/demo_bottom_sheet_screen.dart';
+
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:flutter_cook_book/presentations/bottom_sheet/exe_bts.dart';
+
 import 'package:flutter_cook_book/presentations/demo_navigaion/btvn/screen_1.dart';
 import 'package:flutter_cook_book/presentations/demo_navigaion/screen_b.dart';
 import 'package:flutter_cook_book/presentations/demo_navigaion/screen_c.dart';
@@ -11,6 +16,7 @@ import 'package:flutter_cook_book/presentations/demo_textfield/demo_textfield_sc
 import 'package:flutter_cook_book/presentations/grid_view/grid_view_demo.dart';
 import 'package:flutter_cook_book/presentations/grid_view/scroll_controller_demo.dart';
 import 'package:flutter_cook_book/presentations/list_view/list_view_demo_screen.dart';
+import 'package:page_transition/page_transition.dart';
 
 void main() {
   runApp(const MyApp());
@@ -47,7 +53,14 @@ class MyApp extends StatelessWidget {
       // home: const DemoTextField(),
       // home: const DemoToastDialogOverlayScreen(),
       // home: const GridViewDemo(),
-      home: ScrollControllerDemo(),
+      // home: DemoBottomSheetScreen(),
+      home: AnimatedSplashScreen(
+        splash: Icons.abc_outlined,
+        nextScreen: ExeBottomSheet(),
+        splashTransition: SplashTransition.fadeTransition,
+        pageTransitionType: PageTransitionType.fade,
+        backgroundColor: Colors.yellow,
+      ),
     );
   }
 }
