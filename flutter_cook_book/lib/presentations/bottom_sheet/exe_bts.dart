@@ -3,13 +3,17 @@ import 'package:flutter_cook_book/presentations/bottom_sheet/widgets/bottom_shee
 import 'package:flutter_cook_book/presentations/widget_common/base_screen.dart';
 
 class ExeBottomSheet extends StatefulWidget {
-  const ExeBottomSheet({Key? key}) : super(key: key);
+  const ExeBottomSheet({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<ExeBottomSheet> createState() => _ExeBottomSheetState();
 }
 
 class _ExeBottomSheetState extends State<ExeBottomSheet> {
+  int initValue = 0;
+
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
@@ -20,7 +24,11 @@ class _ExeBottomSheetState extends State<ExeBottomSheet> {
             context: context,
             builder: (contextBottomSheet) {
               return BottomSheetExe(
-                quality: 3,
+                callBack: (int valueCallBack) {
+                  initValue = valueCallBack;
+                  setState(() {});
+                },
+                currentValueItem: initValue,
               );
             },
           );
@@ -31,9 +39,7 @@ class _ExeBottomSheetState extends State<ExeBottomSheet> {
           child: const Text('Select item'),
         ),
       ),
-      bodyScreen: Container(
-        child: const Text('You have 3 items current in cart'),
-      ),
+      bodyScreen: Text('You have $initValue items current in cart'),
     );
   }
 }

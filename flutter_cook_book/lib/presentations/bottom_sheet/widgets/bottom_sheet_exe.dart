@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 class BottomSheetExe extends StatefulWidget {
   const BottomSheetExe({
     Key? key,
-    required this.quality,
+    required this.callBack,
+    required this.currentValueItem,
   }) : super(key: key);
-  final int quality; //get current value in cart
-  // final int quality; //get current value in cart
+  final int currentValueItem;
+  final Function(int valueCallBack) callBack;
 
   @override
   State<BottomSheetExe> createState() => _BottomSheetExeState();
@@ -18,7 +19,12 @@ class _BottomSheetExeState extends State<BottomSheetExe> {
   @override
   void initState() {
     super.initState();
-    quality = widget.quality;
+    quality = widget.currentValueItem;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -38,12 +44,18 @@ class _BottomSheetExeState extends State<BottomSheetExe> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        quality--;
+                        setState(() {});
+                      },
                       child: const Text('(-)'),
                     ),
                     Text('$quality'),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        quality++;
+                        setState(() {});
+                      },
                       child: const Text('(+)'),
                     )
                   ],
@@ -53,7 +65,8 @@ class _BottomSheetExeState extends State<BottomSheetExe> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // callback(quality)
+                    Navigator.of(context).pop();
+                    widget.callBack(quality);
                   },
                   child: const Text('Confirm'),
                 )
