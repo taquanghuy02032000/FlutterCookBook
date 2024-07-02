@@ -18,6 +18,8 @@ import 'package:flutter_cook_book/presentations/grid_view/scroll_controller_demo
 import 'package:flutter_cook_book/presentations/list_view/list_view_demo_screen.dart';
 import 'package:page_transition/page_transition.dart';
 
+import 'presentations/chua_bai_kiem_tra_1.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -56,7 +58,8 @@ class MyApp extends StatelessWidget {
       // home: DemoBottomSheetScreen(),
       home: AnimatedSplashScreen(
         splash: Icons.abc_outlined,
-        nextScreen: ExeBottomSheet(),
+        // nextScreen: ExeBottomSheet(),
+        nextScreen: Screen2(),
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType: PageTransitionType.fade,
         backgroundColor: Colors.yellow,
