@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cook_book/dart_concurrency/demo_future_with_ui.dart';
+import 'package:flutter_cook_book/dart_concurrency/lab_flutter_10.dart';
+import 'package:flutter_cook_book/mvvm_mini_demo/view/mvvm_demo_view.dart';
 import 'package:flutter_cook_book/presentations/bottom_sheet/demo_bottom_sheet_screen.dart';
 
 import 'package:animated_splash_screen/animated_splash_screen.dart';
@@ -61,7 +63,7 @@ class MyApp extends StatelessWidget {
         splash: Icons.abc_outlined,
         // nextScreen: ExeBottomSheet(),
         // nextScreen: Screen2(),
-        nextScreen: DemoFutureWithUI(),
+        nextScreen: DemoMVVMView(),
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType: PageTransitionType.fade,
         backgroundColor: Colors.yellow,

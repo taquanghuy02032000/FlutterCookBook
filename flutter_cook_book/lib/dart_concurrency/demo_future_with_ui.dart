@@ -12,10 +12,15 @@ class DemoFutureWithUI extends StatelessWidget {
         children: [
           ElevatedButton(
             onPressed: () {},
-            child: Container(
-              width: 80,
-              height: 80,
-              color: Colors.red,
+            child: StreamBuilder<int>(
+              stream: Stream<int>.value(3),
+              builder: (context, snapshot) {
+                return Container(
+                  width: 80,
+                  height: 80,
+                  color: (snapshot.data! % 2 == 0) ? Colors.red : Colors.blue,
+                );
+              }
             ),
           ),
           FutureBuilder<String>(
