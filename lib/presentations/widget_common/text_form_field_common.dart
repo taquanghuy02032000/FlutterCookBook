@@ -19,6 +19,7 @@ class TextFormFieldCommon extends StatelessWidget {
       decoration: InputDecoration(
         labelText: label,
       ),
+      onChanged: (value) {},
     );
   }
 }
