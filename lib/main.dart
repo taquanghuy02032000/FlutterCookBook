@@ -1,4 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cook_book/dart_concurrency/demo_future_with_ui.dart';
+import 'package:flutter_cook_book/dart_concurrency/lab_flutter_10.dart';
+import 'package:flutter_cook_book/demo_get_x/binding/my_binding.dart';
+import 'package:flutter_cook_book/demo_get_x/binding/ui_getx_binding.dart';
+import 'package:flutter_cook_book/demo_get_x/presentations/ui_screen.dart';
+import 'package:flutter_cook_book/mvvm_mini_demo/view/mvvm_demo_view.dart';
+import 'package:flutter_cook_book/presentations/bottom_sheet/demo_bottom_sheet_screen.dart';
+
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:flutter_cook_book/presentations/bottom_sheet/exe_bts.dart';
+
 import 'package:flutter_cook_book/presentations/demo_navigaion/btvn/screen_1.dart';
 import 'package:flutter_cook_book/presentations/demo_navigaion/screen_b.dart';
 import 'package:flutter_cook_book/presentations/demo_navigaion/screen_c.dart';
@@ -8,9 +19,47 @@ import 'package:flutter_cook_book/presentations/demo_stateless_feat_statefull/de
 import 'package:flutter_cook_book/presentations/demo_textfield/ToastFtDialogFtOverlay/demo_toast_dialog_overlay.dart';
 import 'package:flutter_cook_book/presentations/demo_textfield/chua_bt_text_field.dart';
 import 'package:flutter_cook_book/presentations/demo_textfield/demo_textfield_screen.dart';
+import 'package:flutter_cook_book/presentations/grid_view/grid_view_demo.dart';
+import 'package:flutter_cook_book/presentations/grid_view/scroll_controller_demo.dart';
+import 'package:flutter_cook_book/presentations/list_view/list_view_demo_screen.dart';
+import 'package:get/get.dart';
+import 'package:page_transition/page_transition.dart';
+
+import 'presentations/chua_bai_kiem_tra_1.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MyAppGetX());
+}
+
+class MyAppGetX extends StatelessWidget {
+  const MyAppGetX({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
+      // initialRoute: '/',
+      getPages: [
+        GetPage(
+          name: '/home',
+          page: () => const UIBindingDemoScreen(),
+          binding: MyBinding(),
+        ),
+        GetPage(
+          name: '/state',
+          page: () => const UiGetXDemo(),
+        )
+      ],
+      home: AnimatedSplashScreen(
+        splash: Icons.abc_outlined,
+        // nextScreen: ExeBottomSheet(),
+        // nextScreen: Screen2(),
+        nextScreen: const UiGetXDemo(),
+        splashTransition: SplashTransition.fadeTransition,
+        pageTransitionType: PageTransitionType.fade,
+        backgroundColor: Colors.yellow,
+      ),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -36,13 +85,24 @@ class MyApp extends StatelessWidget {
           bodyMedium: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w700,
-            color: Colors.pink,
+            color: Colors.black,
           ),
         ),
       ),
       // home: const ScreenB(),
       // home: const DemoTextField(),
-      home: const DemoToastDialogOverlayScreen(),
+      // home: const DemoToastDialogOverlayScreen(),
+      // home: const GridViewDemo(),
+      // home: DemoBottomSheetScreen(),
+      home: AnimatedSplashScreen(
+        splash: Icons.abc_outlined,
+        // nextScreen: ExeBottomSheet(),
+        // nextScreen: Screen2(),
+        nextScreen: const DemoMVVMView(),
+        splashTransition: SplashTransition.fadeTransition,
+        pageTransitionType: PageTransitionType.fade,
+        backgroundColor: Colors.yellow,
+      ),
     );
   }
 }
